@@ -1,0 +1,15 @@
+# Desativar exibição de erros no navegador
+php_value display_errors On
+
+# Configurar entrada automática de mbstring
+php_value mbstring.http_input auto
+
+# Definir o fuso horário
+php_value date.timezone America/Sao_Paulo
+
+# Permitir listagem de diretórios (caso necessário)
+Options +Indexes
+
+# Redirecionar URLs amigáveis para arquivos .html (se existirem)
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule !.*\.html$ %{REQUEST_FILENAME}.html [L]

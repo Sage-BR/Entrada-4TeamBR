@@ -1,0 +1,115 @@
+<!--=====================================================================\\
+//                 By 4TeamBR / WebSite: https://4teambr.com             \\
+//                  Social: https://url.4teambr.com/4teambr              \\
+//======================================================================-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lineage 2 Teste - Tela Inicial</title>
+	<meta property="og:locale" content="en" />
+	<link rel="icon" type="image/png" href="https://i.imgur.com/oaY5S2C.png" sizes="32x32" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+          crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css?v=0.0.7" />
+</head>
+<body>
+    <div class="background" id="background"></div>
+    <div class="overlay">
+	
+        <!-- Tela de Carregamento -->
+        <div id="loadingScreen" class="loading-screen">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div id="splashContainer" class="splash-container">
+            <img src="https://i.imgur.com/No6yPU4.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Botões Acima do Footer -->
+        <div class="buttons">
+			<a href="Site/index.php" class="btn btn-primary siteButton">Site</a>
+			<a href="/votesystem" class="btn btn-secondary" target="_blank" rel="noopener">VoteSystem</a>
+			<a href="https://discord.com/your-server-link" class="btn btn-secondary" target="_blank" rel="noopener">Discord</a>
+			<a href="/cadastro" class="btn btn-secondary">Register</a>
+        </div>
+
+        <div>
+            <center>
+            <!-- 4Team TOP Servers -->
+            <a href="https://top.4teambr.com/index.php?a=in&u=" target="_blank" rel="noopener"><img src="https://top.4teambr.com/images/button.png" alt="4Team TOP Servers"  style="border-radius: 5px; padding: 3px; width:115px; height:53px;" left: 0;"/></a>
+            <!-- HopZone EU -->
+            <a href="https://hopzone.eu/vote/" target="_blank"><img src="https://hopzone.eu/uploads/pages_media/2_banner-4.png" alt="Vote for us in HopZone.Eu"  style="border-radius: 5px; padding: 3px; width:115px; height:53px;" left: 0;"/></a>
+            <!-- L2JBrasil -->
+            <a id="top-l2jbrasil-legacy" href="//top.l2jbrasil.com/index.php?a=in&u=" target="_blank"><img src="//top.l2jbrasil.com/button.php?u=l2cronos" style="border-radius: 5px; padding: 3px; width:115px; height:53px;" left: 0;" alt="Top L2JBrasil  de Servidores de   Lineage2 " border="0" /></a>
+            <!-- ItopZ -->
+            <a href="https://itopz.com/vote/" target="_blank"> <img src="https://itopz.com/content/images/vote/vote-7.png" style="border-radius: 5px; padding: 3px; width:115px; height:53px;" left: 0;" alt="Vote for us in iTopZ" /></a>
+            <!-- L2Votes -->
+            <a href='https://l2votes.com/votes.php?sid=542' target='_blank' title='l2votes.com'><img alt='https://l2votes.com/votes.php?sid=' style="border-radius: 5px; padding: 3px; width:115px; height:53px;" left: 0;" src='https://l2votes.com/images/logos/l2votes-1.jpg'/></a>
+            </center>
+            <center>
+            <!-- TopGameServer -->
+            <a href="https://l2.topgameserver.net/lineage/voting/378/L2 Cronos" target="_blank" id="d743aaf3c20CDr76J8720"><div class="img-vote-server" style="border-radius: 5px; padding: 3px; width:115px; height:53px;"><img src="https://i.imgur.com/qGjEQre.gif" alt="Lineage 2 Servers -l2.topgameserver.net" title="l2.topgameserver.net - lineage 2" width="140" height="70"></div></a>
+            </center>
+        </div>
+		<br>
+		<div id="fb-root"></div>
+			<script>
+				(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+			</script>
+			<div class="fb-like-box-back">
+				<div class="fb-like-box" data-href="https://www.facebook.com/4TeamBrasil" data-width="578" data-height="85" data-colorscheme="dark" data-show-faces="false" data-border-color="#666" data-stream="true" data-header="false"></div>
+			</div>
+			
+        <!-- Footer -->
+        <div class="footer">Powered by <a href="https://4teambr.com" target="_blank" rel="noopener">4TeamBR</a> @ 2025</div>
+    </div>
+
+ <script>
+    const loadingScreen = document.getElementById('loadingScreen');
+    const splashContainer = document.getElementById('splashContainer');
+
+    // Mostrar a tela de carregamento por 3 segundos
+    setTimeout(() => {
+        loadingScreen.classList.add('fade-out');
+    }, 3000);
+
+    // Verificar o localStorage para saber se o usuário já visitou
+    const hasVisited = localStorage.getItem('hasVisited');
+    const visitExpiry = localStorage.getItem('visitExpiry');
+    const now = new Date().getTime();
+
+    if (hasVisited && visitExpiry && now < visitExpiry) {
+        // Redireciona automaticamente para o site principal se a visita ainda for válida
+        window.location.href = 'Site/index.php';
+    } else {
+        // Salvar a nova visita com validade de 1 hora
+        const expiryTime = now + 20 * 60 * 1000; // 20 minutos em milissegundos
+        localStorage.setItem('hasVisited', 'true');
+        localStorage.setItem('visitExpiry', expiryTime);
+    }
+
+    // Escolher um GIF aleatoriamente para o fundo
+    const gifs = [
+        'https://c.tenor.com/tKwJGaKO79sAAAAC/tenor.gif',
+        'https://c.tenor.com/tKwJGaKO79sAAAAC/tenor.gif'
+    ];
+    const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+    document.getElementById('background').style.backgroundImage = `url(${randomGif})`;
+</script>
+
+</body>
+</html>

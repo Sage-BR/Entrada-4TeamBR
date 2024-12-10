@@ -1,0 +1,137 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+/* Splash Container */
+.splash-container {
+    text-align: center;
+    margin: auto;
+}
+
+.logo {
+    width: 300px;
+    margin: 20px auto;
+}
+/* Botões acima do footer */
+.buttons {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.buttons button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+    /* Tela de carregamento */
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+    }
+    .loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Spinner (círculo giratório) */
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.3); /* Cor externa */
+        border-top: 5px solid #fff; /* Cor giratória */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    /* Animação de rotação */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+/* Botões fixos à esquerda */
+.fixed-buttons {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.fixed-buttons a {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.fixed-buttons a:hover {
+    background-color: #666;
+}
+.background {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-size: cover;
+background-position: center;
+z-index: 1;
+}
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.70); /* Aumento de opacidade para 80% */
+z-index: 2;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+/* Footer */
+.footer {
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+}
+.footer a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
