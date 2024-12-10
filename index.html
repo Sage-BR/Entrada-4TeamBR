@@ -82,7 +82,7 @@
         <div class="footer">Powered by <a href="https://4teambr.com" target="_blank" rel="noopener">4TeamBR</a> @ 2025</div>
     </div>
 
- <script>
+<script>
     const loadingScreen = document.getElementById('loadingScreen');
     const splashContainer = document.getElementById('splashContainer');
 
@@ -91,7 +91,7 @@
         loadingScreen.classList.add('fade-out');
     }, 3000);
 
-    // Verificar o localStorage para saber se o usuário já visitou
+    // Verificar se o usuário já visitou e se o tempo é válido
     const hasVisited = localStorage.getItem('hasVisited');
     const visitExpiry = localStorage.getItem('visitExpiry');
     const now = new Date().getTime();
@@ -99,12 +99,21 @@
     if (hasVisited && visitExpiry && now < visitExpiry) {
         // Redireciona automaticamente para o site principal se a visita ainda for válida
         window.location.href = 'Site/index.php';
-    } else {
-        // Salvar a nova visita com validade de 1 hora
+    }
+
+    // Configurar o clique no botão "Site"
+    const siteButton = document.querySelector('.siteButton');
+    siteButton.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevenir redirecionamento imediato
+
+        // Salvar a nova visita com validade de 20 minutos
         const expiryTime = now + 20 * 60 * 1000; // 20 minutos em milissegundos
         localStorage.setItem('hasVisited', 'true');
         localStorage.setItem('visitExpiry', expiryTime);
-    }
+
+        // Redirecionar para o site
+        window.location.href = siteButton.href;
+    });
 
     // Escolher um GIF aleatoriamente para o fundo
     const gifs = [
@@ -114,6 +123,7 @@
     const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
     document.getElementById('background').style.backgroundImage = `url(${randomGif})`;
 </script>
+
 
 </body>
 </html>
