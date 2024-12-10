@@ -135,3 +135,14 @@ align-items: center;
 .footer a:hover {
     text-decoration: underline;
 }
+.image-container img {
+    border-radius: 10px; /* Bordas arredondadas */
+    margin: 5px;         /* Espaçamento entre imagens */
+    height: 45px;        /* Altura fixa */
+    width: 100px;        /* Largura fixa */
+    transition: transform 0.2s; /* Animação para hover opcional */
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
