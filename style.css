@@ -99,7 +99,7 @@ body, html {
     background-color: #666;
 }
 .background {
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 width: 100%;
@@ -109,7 +109,7 @@ background-position: center;
 z-index: 1;
 }
 .overlay {
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 width: 100%;
