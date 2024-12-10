@@ -86,34 +86,40 @@
     const loadingScreen = document.getElementById('loadingScreen');
     const splashContainer = document.getElementById('splashContainer');
 
+    // Configuração de tempo (em minutos)
+    const tempoConfig = 20; // Altere este valor para o tempo desejado
+
     // Mostrar a tela de carregamento por 3 segundos
     setTimeout(() => {
-        loadingScreen.classList.add('fade-out');
+        loadingScreen?.classList.add('fade-out'); // Verifica se o elemento existe
     }, 3000);
 
     // Verificar se o usuário já visitou e se o tempo é válido
     const hasVisited = localStorage.getItem('hasVisited');
     const visitExpiry = localStorage.getItem('visitExpiry');
-    const now = new Date().getTime();
+    const now = Date.now();
 
-    if (hasVisited && visitExpiry && now < visitExpiry) {
-        // Redireciona automaticamente para o site principal se a visita ainda for válida
+    if (hasVisited && visitExpiry && now < Number(visitExpiry)) {
+        // Redireciona automaticamente para o site principal
         window.location.href = 'index.php';
     }
 
     // Configurar o clique no botão "Site"
     const siteButton = document.querySelector('.siteButton');
-    siteButton.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevenir redirecionamento imediato
+    if (siteButton) {
+        siteButton.addEventListener('click', (e) => {
+            e.preventDefault();
 
-        // Salvar a nova visita com validade de 20 minutos
-        const expiryTime = now + 20 * 60 * 1000; // 20 minutos em milissegundos
-        localStorage.setItem('hasVisited', 'true');
-        localStorage.setItem('visitExpiry', expiryTime);
+            // Salvar a nova visita com base no tempo configurado
+            const expiryTime = now + tempoConfig * 60 * 1000; // Tempo configurado em milissegundos
+            localStorage.setItem('hasVisited', 'true');
+            localStorage.setItem('visitExpiry', expiryTime);
 
-        // Redirecionar para o site
-        window.location.href = siteButton.href;
-    });
+            // Redirecionar para o site
+            const targetUrl = siteButton.getAttribute('href') || 'index.php';
+            window.location.href = targetUrl;
+        });
+    }
 
     // Escolher um GIF aleatoriamente para o fundo
     const gifs = [
@@ -121,9 +127,12 @@
         'https://c.tenor.com/tKwJGaKO79sAAAAC/tenor.gif'
     ];
     const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
-    document.getElementById('background').style.backgroundImage = `url(${randomGif})`;
-</script>
+    const backgroundElement = document.getElementById('background');
 
+    if (backgroundElement) {
+        backgroundElement.style.backgroundImage = `url(${randomGif})`;
+    }
+</script>
 
 </body>
 </html>
