@@ -1,22 +1,32 @@
 body, html {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     background-color: #1a1a1a;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     color: #fff;
+    overflow: hidden;
+    position: relative;
     font-family: Arial, sans-serif;
 }
 /* Splash Container */
 .splash-container {
-    text-align: center;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px; /* Espaço superior opcional */
+    padding: 10px 0;
+    position: sticky; /* Fixa no topo da tela ao rolar */
+    top: 0;
+    z-index: 1000; /* Certifica que a logo está sobre outros elementos */
 }
 
 .logo {
-    width: 300px;
-    margin: 20px auto;
+    max-width: 300px; /* Tamanho máximo da logo */
+    width: 20%; /* Responsivo */
+    height: auto; /* Mantém a proporção */
 }
 /* Botões acima do footer */
 .buttons {
@@ -123,10 +133,13 @@ align-items: center;
 }
 /* Footer */
 .footer {
-    color: #fff;
+    position: fixed; /* Mudado para fixed para estar sempre visível */
+    bottom: 0;
     text-align: center;
-    padding: 15px 0;
-    margin-top: auto;
+    width: 100%;
+    color: #fff;
+    font-size: 14px;
+    z-index: 4; /* Garante que o rodapé esteja acima dos outros elementos */;
 }
 .footer a {
     color: #0d6efd;
@@ -137,7 +150,7 @@ align-items: center;
 }
 .image-container img {
     border-radius: 10px; /* Bordas arredondadas */
-    margin: 5px;         /* Espaçamento entre imagens */
+    margin: 2px;         /* Espaçamento entre imagens */
     height: 45px;        /* Altura fixa */
     width: 100px;        /* Largura fixa */
     transition: transform 0.2s; /* Animação para hover opcional */
