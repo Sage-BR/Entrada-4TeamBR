@@ -24,7 +24,7 @@ body, html {
 }
 
 .logo {
-    max-width: 300px; /* Tamanho máximo da logo */
+    max-width: 330px; /* Tamanho máximo da logo */
     width: 20%; /* Responsivo */
     height: auto; /* Mantém a proporção */
 }
@@ -151,11 +151,72 @@ align-items: center;
 .image-container img {
     border-radius: 10px; /* Bordas arredondadas */
     margin: 2px;         /* Espaçamento entre imagens */
-    height: 45px;        /* Altura fixa */
-    width: 100px;        /* Largura fixa */
+    height: 65px;        /* Altura fixa */
+    width: 125px;        /* Largura fixa */
     transition: transform 0.2s; /* Animação para hover opcional */
 }
 
 .image-container img:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
 }
+
+/* Para telas maiores (ex.: monitores widescreen) */
+@media (min-width: 1920px) {
+    .logo {
+        max-width: 400px;
+        width: 25%; /* Aumenta a logo */
+    }
+
+    .buttons button {
+        padding: 15px 30px; /* Botões maiores */
+        font-size: 18px;
+    }
+
+    .spinner {
+        width: 70px;
+        height: 70px;
+        border: 7px solid rgba(255, 255, 255, 0.3);
+        border-top: 7px solid #fff;
+    }
+	
+    .image-container img {
+        height: 75px; /* Reduz tamanho da imagem */
+        width: 150px;
+    }	
+}
+
+/* Para telas pequenas (ex.: smartphones) */
+@media (max-width: 767px) {
+    .logo {
+        max-width: 250px;
+        width: 30%; /* Menor logo */
+    }
+
+    .buttons {
+        flex-direction: column; /* Botões em coluna */
+        gap: 10px;
+    }
+
+    .buttons button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        border-top: 5px solid #fff;
+    }
+
+    .fixed-buttons a {
+        padding: 8px 15px; /* Botões laterais menores */
+        font-size: 14px;
+    }
+
+    .image-container img {
+        height: 35px; /* Reduz tamanho da imagem */
+        width: 80px;
+    }
+}
+
