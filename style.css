@@ -20,7 +20,6 @@ body, html {
     padding: 10px 0;
     position: sticky; /* Fixa no topo da tela ao rolar */
     top: 0;
-    z-index: 1000; /* Certifica que a logo está sobre outros elementos */
 }
 
 .logo {
@@ -33,7 +32,7 @@ body, html {
     margin: 20px 0;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
 }
 .buttons button {
     padding: 10px 20px;
@@ -47,35 +46,35 @@ body, html {
 .buttons button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
-    /* Tela de carregamento */
-    .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        opacity: 1;
-        transition: opacity 0.5s ease-out;
-    }
-    .loading-screen.fade-out {
-        opacity: 0;
-        pointer-events: none;
-    }
+ /* Tela de carregamento */
+ .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
 
-    /* Spinner (círculo giratório) */
-    .spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid rgba(255, 255, 255, 0.3); /* Cor externa */
-        border-top: 5px solid #fff; /* Cor giratória */
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
+/* Spinner (círculo giratório) */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3); /* Cor externa */
+  border-top: 5px solid #fff; /* Cor giratória */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
 
     /* Animação de rotação */
     @keyframes spin {
@@ -86,28 +85,37 @@ body, html {
             transform: rotate(360deg);
         }
     }
-/* Botões fixos à esquerda */
+	
 .fixed-buttons {
-    position: fixed;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    position: fixed;         /* Fixa os banners na lateral esquerda da tela */
+    top: 50%;                /* Centraliza verticalmente */
+    left: 0;                 /* Encosta na borda esquerda */
+    transform: translateY(-50%); /* Move o grupo para alinhar ao centro vertical */
+    display: flex;           /* Habilita o layout flexível */
+    flex-direction: column;  /* Empilha os elementos verticalmente */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+    gap: 15px;               /* Espaçamento entre os itens */
+    z-index: 10;             /* Garante que os banners fiquem acima de outros elementos */
 }
+
 .fixed-buttons a {
-    background-color: #444;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    display: block;          /* Garante que cada link seja tratado como bloco */
+    width: 120px;            /* Define largura padrão para todos os links */
 }
-.fixed-buttons a:hover {
-    background-color: #666;
+
+.fixed-buttons img {
+    display: block;          /* Impede comportamento inline estranho */
+    height: 50px;        /* Altura fixa */
+    width: 100px;        /* Largura fixa */
+    border-radius: 10px;     /* Bordas arredondadas */
+    transition: transform 0.2s ease; /* Animação ao passar o mouse */
 }
+
+.fixed-buttons img:hover {
+    transform: scale(1.1);   /* Efeito de zoom no hover */
+}
+
+
 .background {
 position: fixed;
 top: 0;
@@ -125,7 +133,7 @@ left: 0;
 width: 100%;
 height: 100%;
 background: rgba(0, 0, 0, 0.70); /* Aumento de opacidade para 80% */
-z-index: 2;
+z-index: 1;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -148,17 +156,41 @@ align-items: center;
 .footer a:hover {
     text-decoration: underline;
 }
-.image-container img {
-    border-radius: 10px; /* Bordas arredondadas */
-    margin: 2px;         /* Espaçamento entre imagens */
-    height: 65px;        /* Altura fixa */
-    width: 125px;        /* Largura fixa */
-    transition: transform 0.2s; /* Animação para hover opcional */
+
+.countdown-container {
+    display: flex;
+    justify-content: center; /* Alinha os números horizontalmente */
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os blocos */
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.4); /* Fundo escuro translúcido */
+    border-radius: 15px; /* Bordas arredondadas */
+    color: #fff; /* Cor do texto */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra elegante */
+    text-align: center;
 }
 
-.image-container img:hover {
-    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.countdown-item div {
+    font-size: 40px; /* Tamanho dos números */
+    font-weight: bold; /* Números em negrito */
+    color: #fff; /* Cor branca */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Efeito de brilho nos números */
+}
+
+.countdown-item span {
+    font-size: 16px; /* Tamanho das legendas */
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.7); /* Legendas com opacidade */
+}
+
 
 /* Para telas maiores (ex.: monitores widescreen) */
 @media (min-width: 1920px) {
